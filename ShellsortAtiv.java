@@ -43,8 +43,6 @@ class ShellsortAtiv {
             h /= 3;
         }
 
-        System.out.println("\nOrdenação do Vetor:");
-
         for (int i : listaNum) {
             System.out.println(i);
         }
@@ -82,7 +80,6 @@ class ShellsortAtiv {
             h /= 3;
         }
 
-        System.out.println("\nOrdenação da Pilha:");
         System.out.println(shellStack);
     }
 
@@ -114,8 +111,10 @@ class ShellsortAtiv {
                         System.out.println("Tamanho inválido! Digite novamente\n");
                     } 
                 }
+
                 ShellsortStack();
                 break;
+
         }
     }
 }
