@@ -65,23 +65,19 @@ class ShellsortAtiv {
         }
 
         while (h > 0) {
-            for (int i = h; i < tamVet; i++) {
-                temp = shellStack.elementAt(i);
-                int temp2 = i;
 
-                while (temp2 >= h && shellStack.elementAt(temp2 - h) > temp) {
-                    shellStack.set(temp2, shellStack.elementAt(temp2 - h));
-                    temp2 -= h;
-                }
+            Stack<Integer> shellStackTEMP = new Stack<>();
 
-                shellStack.set(temp2, temp);
-            }
+            for(int i = 0; i<tamVet; i++) shellStackTEMP.push(shellStack.pop());
 
-            h /= 3;
-        }
+
+            
 
         System.out.println(shellStack);
     }
+
+  //public static void Shellsort
+
 
     public static void main(String[] args) {
 
