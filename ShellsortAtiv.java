@@ -1,7 +1,9 @@
-import java.util.Scanner;
-import java.util.Random;
-import java.util.Stack;
-import java.util.LinkedList;
+import java.util.Scanner; //biblioteca usada para receber valores do usuário
+import java.util.Random; //biblioteca usada para randomizar os números do vetor
+import java.util.Stack; //biblioteca das stacks
+import java.util.LinkedList; //biblioteca da linkedlist
+
+//ATENÇÃO: ESSE CÓDIGO SÓ FUNCIONARÁ SE FOR COLOCADO EM UM ARQUIVO CHAMADO ShellsortAtiv.java!!!!!!!!!!!!!!!!!
 
 class ShellsortAtiv {
 
