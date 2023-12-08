@@ -138,12 +138,14 @@ public static void ShellsortLinkedList() {
                 j -= h;
             }
 
+            //coloca o número temporário na posição correta no linkedlist temporário
             shellListTEMP[j] = temp;
         }
 
         h /= 3;
     }
 
+    //limpa a lista original e preenche ela do início, trazendo os números do vetor temporário
     shellList.clear();
     for (Integer item : shellListTEMP) shellList.add(item);
 
@@ -151,16 +153,22 @@ public static void ShellsortLinkedList() {
 }
 
 
+    //principal  
     public static void main(String[] args) {
 
+        //variável criada para o jogador poder escolher entre sair ou continuar jogando
         boolean sair = false;
 
+        //loop principal
         while(!sair){
+            //menu e opção do usuário
             System.out.println("\nEscolha o que deseja fazer com o método de ordenação ShellSort:\n1 - Ordenação de um VETOR aleatório\n2 - Ordenação de uma STACK\n3 - Ordenação de um LINKED LIST\n4 - Sair");
             op = scan.nextInt();
 
+            //switch usado para agir de acordo com a escolha do usuário
             switch (op) {
 
+                //VETOR (Questão 01)
                 case 1:
 
                     tamVet = 0;
@@ -174,6 +182,7 @@ public static void ShellsortLinkedList() {
                     ShellsortVetor();
                     break;
 
+                //STACK (Questão 02)
                 case 2:
 
                     tamVet = 0;
@@ -187,6 +196,7 @@ public static void ShellsortLinkedList() {
                     ShellsortStack();
                     break;
 
+                //LINKEDLIST (Questão 03)
                 case 3: 
 
                     tamVet = 0;
@@ -200,12 +210,14 @@ public static void ShellsortLinkedList() {
                         ShellsortLinkedList();
                         break;
 
+                //caso o usuário queira sair
                 case 4:
 
                     System.out.println("\nSaindo do programa...");
                     sair = true;
                     break;
 
+                //caso o usuário digite uma opção que não exista no menu
                 default:
 
                     System.out.println("Opção inválida! Digite novamente!");
