@@ -6,7 +6,7 @@ class ShellsortAtiv {
 
     public static int tamVet;
     public static int h;
-    public static int temp, op;
+    public static int temp, temp2, op;
 
     public static Scanner scan = new Scanner(System.in);
 
@@ -15,22 +15,18 @@ class ShellsortAtiv {
 
         int listaNum[] = new int[tamVet];
 
-        for (int i = 0; i < tamVet; i++) {
-            listaNum[i] = escolha.nextInt(100) + 1;
-        }
+        for (int i = 0; i < tamVet; i++) listaNum[i] = escolha.nextInt(100) + 1;
 
         h = 1;
 
-        while (h <= tamVet / 3) {
-            h = h * 3 + 1;
-        }
+        while (h <= tamVet / 3) h = h * 3 + 1;
 
         while (h > 0) {
 
             for (int i = h; i < tamVet; i++) {
 
                 temp = listaNum[i];
-                int temp2 = i;
+                temp2 = i;
 
                 while (temp2 >= h && listaNum[temp2 - h] > temp) {
                     listaNum[temp2] = listaNum[temp2 - h];
@@ -43,9 +39,7 @@ class ShellsortAtiv {
             h /= 3;
         }
 
-        for (int i : listaNum) {
-            System.out.println(i);
-        }
+        for (int i : listaNum) System.out.println(i);
     }
 
     public static void ShellsortStack() {
@@ -60,24 +54,35 @@ class ShellsortAtiv {
 
         h = 1;
 
-        while (h <= tamVet / 3) {
-            h = h * 3 + 1;
-        }
+        while (h <= tamVet / 3) h = h * 3 + 1;
 
         while (h > 0) {
 
             Stack<Integer> shellStackTEMP = new Stack<>();
 
-            for(int i = 0; i<tamVet; i++) shellStackTEMP.push(shellStack.pop());
+            while (!shellStack.isEmpty()) {
+                shellStackTEMP.push(shellStack.pop());
+            }
+    
+            while (!shellStackTEMP.isEmpty()) {
+                temp = shellStackTEMP.pop();
+                temp2 = 0;
+    
+                while (temp2 < shellStack.size() && shellStack.elementAt(temp2) < temp) {
+                    temp2++;
+                }
 
+                shellStack.push(temp);
+    
+                while (!shellStackTEMP.isEmpty()) shellStack.push(shellStackTEMP.pop());
+            }
 
-            
+            h/=3;
+        }
 
+        
         System.out.println(shellStack);
-    }
-
-  //public static void Shellsort
-
+}
 
     public static void main(String[] args) {
 
@@ -103,9 +108,7 @@ class ShellsortAtiv {
                     System.out.println("Selecione o tamanho da Stack (4 mín.)");
                     tamVet = scan.nextInt();
 
-                    if(tamVet < 4){
-                        System.out.println("Tamanho inválido! Digite novamente\n");
-                    } 
+                    if(tamVet < 4) System.out.println("Tamanho inválido! Digite novamente\n");
                 }
 
                 ShellsortStack();
