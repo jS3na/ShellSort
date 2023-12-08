@@ -44,6 +44,7 @@ class ShellsortAtiv {
 
     public static void ShellsortStack() {
         Stack<Integer> shellStack = new Stack<>();
+        int[] shellStackTEMP = new int[tamVet];
 
         for (int s = 0; s < tamVet; s++) {
             System.out.printf("Digite o %d número da pilha: ", s + 1);
@@ -56,30 +57,32 @@ class ShellsortAtiv {
 
         while (h <= tamVet / 3) h = h * 3 + 1;
 
+        int indice2 = 0;
+        while(!shellStack.isEmpty()){
+            shellStackTEMP[indice2++] = shellStack.pop();
+        }
+
         while (h > 0) {
 
-            Stack<Integer> shellStackTEMP = new Stack<>();
-
-            while (!shellStack.isEmpty()) {
-                shellStackTEMP.push(shellStack.pop());
-            }
+            for (int i = h; i < tamVet; i++) {
+                int temp = shellStackTEMP[i];
+                int j = i;
     
-            while (!shellStackTEMP.isEmpty()) {
-                temp = shellStackTEMP.pop();
-                temp2 = 0;
-    
-                while (temp2 < shellStack.size() && shellStack.elementAt(temp2) < temp) {
-                    temp2++;
+                while (j >= h && shellStackTEMP[j - h] > temp) {
+                    shellStackTEMP[j] = shellStackTEMP[j - h];
+                    j -= h;
                 }
-
-                shellStack.push(temp);
     
-                while (!shellStackTEMP.isEmpty()) shellStack.push(shellStackTEMP.pop());
+                shellStackTEMP[j] = temp;
             }
 
             h/=3;
+            
         }
 
+        for (int i : shellStackTEMP) {
+            shellStack.push(i);
+        }    
         
         System.out.println(shellStack);
 }
